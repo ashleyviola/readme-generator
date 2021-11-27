@@ -1,12 +1,14 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 
-// TODO: Create an array of questions for user input
-const questions = () => {
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
+
+
+const promptQuestions = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'projectName',
+            name: 'title',
             message: 'Enter Your Project Name',
             validate: nameInput => {
                 if(nameInput){
@@ -24,15 +26,13 @@ const questions = () => {
         },
         {
             type: 'input',
-            name: 'installationInstructions',
+            name: 'installation',
             message: 'Enter Installation Instructions'
         },
         {
-            type: 'checkbox',
+            type: 'input',
             name: 'license',
-            message: 'Select License Type',
-            choices:['GNU GPLv3, MIT, ISC, Rust, Apache License 2.0']
-        },
+            message: 'Enter License Type'        },
         {
             type: 'input',
             name: 'usage',
@@ -62,11 +62,29 @@ const questions = () => {
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', fileContent, err => {
+            if(err){
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message:'File created!'
+            });
+        });
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
-init();
-questions();
+promptQuestions()
+    .then(projectData => {
+        return generateMarkdown(projectData);
+    })
+    .then(readMe => {
+        return writeFile(readMe);
+    });
