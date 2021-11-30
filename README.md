@@ -14,7 +14,7 @@ Website application that is designed to retrieve weather data from the OpenWeath
   - README.md
 
 ## Example of Functionality 
-
+![README Generator Preview](./assets/readmewalkthrough.gif)
 ## Instructions 
 1. Fork and clone repository
 2. Create directory under /develop
