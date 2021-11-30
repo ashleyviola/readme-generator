@@ -1,7 +1,7 @@
 # ReadMe Generator - Homework # 9
 
 ## Project Description 
-Website application that is designed to retrieve weather data from the OpenWeather API and display the results for a specified city. 
+Application that allows you to enter information about a project to create a detailed README file. 
 
 ### Built With 
 - JavaScript 
