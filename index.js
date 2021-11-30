@@ -30,9 +30,11 @@ const promptQuestions = () => {
             message: 'Enter Installation Instructions'
         },
         {
-            type: 'input',
+            type: 'checkbox',
             name: 'license',
-            message: 'Enter License Type'        },
+            message: 'Select License for Project. Only choose one.',
+            choices: ['Apache 2.0','Eclipse Public License','GNU GPL v3','BSD 3-Clause', 'Common Development', 'MIT License', 'Mozilla Public License']
+        },
         {
             type: 'input',
             name: 'usage',
